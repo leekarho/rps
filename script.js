@@ -31,15 +31,17 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
+function game(e) {
     let p1Score = 0;
     let compScore = 0;
+    console.log(this.id)
 
     for (let i=0;; i++) {
-        if (p1Score === 5 || compScore === 5) { break;}
-            let p1 = prompt("Rock, Paper, Scissors?");
+        if (p1Score === 5 || compScore === 5) { break; }
             let comp = getComputerChoice();
+            let p1 = this.id
             let result = playRound(p1, comp);
+            
             if (result === `You win!`) {
                 p1Score++;
                 console.log(`P1: ${p1Score}`)
@@ -50,4 +52,7 @@ function game() {
     }
 }
 
-game();
+const btn = Array.from(document.querySelectorAll('button'))
+btn.forEach((button) => {
+    button.addEventListener('click', game)
+    })
