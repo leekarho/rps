@@ -31,28 +31,46 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game(e) {
-    let p1Score = 0;
-    let compScore = 0;
-    console.log(this.id)
-
-    for (let i=0;; i++) {
-        if (p1Score === 5 || compScore === 5) { break; }
-            let comp = getComputerChoice();
-            let p1 = this.id
-            let result = playRound(p1, comp);
-            
-            if (result === `You win!`) {
-                p1Score++;
-                console.log(`P1: ${p1Score}`)
-            } else if (result === `You lose!`) {
-                compScore++;
-                console.log(`Computer: ${compScore}`);
-            }
+function endGame() {
+    if (compScore == 5) {
+        console.log("Computer wins")
+        resetGame()
+    } else if (p1Score == 5) {
+        console.log("Player 1 win!")
+        resetGame()
     }
 }
 
-const btn = Array.from(document.querySelectorAll('button'))
-btn.forEach((button) => {
-    button.addEventListener('click', game)
+function resetGame() {
+    p1Score = 0;
+    compScore = 0;
+}
+
+function game() {
+    const btn = Array.from(document.querySelectorAll('button'))
+    btn.forEach((button) => {button.addEventListener('click', function(e) {
+        let comp = getComputerChoice();
+        let p1 = (this.id)
+        let result = playRound(p1, comp);
+        console.log(result)
+
+        if (result === 'You win!') {
+            p1Score += 1;
+            console.log(`P1: ${p1Score}`);
+        } else if (result === `You lose!`) {
+            compScore += 1;
+            console.log(`Computer: ${compScore}`);
+        }
+        endGame()
+        })
+        
     })
+
+
+}
+
+let p1Score = 0;
+let compScore = 0;
+
+game();
+
