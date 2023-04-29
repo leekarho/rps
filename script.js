@@ -33,20 +33,26 @@ function playRound(playerSelection, computerSelection) {
 
 function endGame() {
     if (compScore == 5) {
-        console.log("Computer wins")
-        resetGame()
+        result.textContent = 'Computer Wins!'
+        resetGame();
     } else if (p1Score == 5) {
-        console.log("Player 1 win!")
-        resetGame()
+        result.textContent = 'You Win!'
+        resetGame();
     }
 }
 
 function resetGame() {
     p1Score = 0;
     compScore = 0;
+    playerScore.textContent = `Player 1: ${p1Score}`
+    computerScore.textContent = `Computer: ${compScore}`
+    // result.textContent = 'Who will win?'
 }
 
 function game() {
+    let result = document.querySelector('#result')
+    let playerScore = document.querySelector('#playerScore')
+    let computerScore = document.querySelector('#computerScore')
     const btn = Array.from(document.querySelectorAll('button'))
     btn.forEach((button) => {button.addEventListener('click', function(e) {
         let comp = getComputerChoice();
@@ -56,17 +62,14 @@ function game() {
 
         if (result === 'You win!') {
             p1Score += 1;
-            console.log(`P1: ${p1Score}`);
+            playerScore.textContent = `Player 1: ${p1Score}`
         } else if (result === `You lose!`) {
             compScore += 1;
-            console.log(`Computer: ${compScore}`);
+            computerScore.textContent = `Computer: ${compScore}`
         }
         endGame()
-        })
-        
+        })      
     })
-
-
 }
 
 let p1Score = 0;
