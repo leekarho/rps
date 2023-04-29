@@ -12,22 +12,18 @@ function playRound(playerSelection, computerSelection) {
         case("RockRock"):
         case("PaperPaper"):
         case("ScissorsScissors"):
-            console.log("draw")
             return("It's a draw!")
             break;
         case("RockScissors"):
         case("PaperRock"):
         case("ScissorsPaper"):
-            console.log(`You win! ${p1} beats ${comp}!`)
             return(`You win!`)
             break;
         case("RockPaper"):
         case("PaperScissors"):
         case("ScissorsRock"):
-            console.log(`You lose! ${p1} loses to ${comp}!`)
             return(`You lose!`)
             break;
-        default: console.log("Invalid selection");
     }
 }
 
@@ -57,7 +53,6 @@ function game() {
         let comp = getComputerChoice();
         let p1 = (this.id)
         let result = playRound(p1, comp);
-        console.log(result)
 
         if (result === 'You win!') {
             p1Score += 1;
