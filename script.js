@@ -1,5 +1,5 @@
 function getComputerChoice() {
-    let choices = ["rock", "paper", "scissors"];
+    let choices = ["Rock", "Paper", "Scissors"];
     let computerChoice = choices[Math.floor(Math.random()*choices.length)];
     return computerChoice;
 }
@@ -46,11 +46,10 @@ function resetGame() {
     compScore = 0;
     playerScore.textContent = `Player 1: ${p1Score}`
     computerScore.textContent = `Computer: ${compScore}`
-    // result.textContent = 'Who will win?'
 }
 
 function game() {
-    let result = document.querySelector('#result')
+    let gameResult = document.querySelector('#result')
     let playerScore = document.querySelector('#playerScore')
     let computerScore = document.querySelector('#computerScore')
     const btn = Array.from(document.querySelectorAll('button'))
@@ -62,10 +61,14 @@ function game() {
 
         if (result === 'You win!') {
             p1Score += 1;
-            playerScore.textContent = `Player 1: ${p1Score}`
+            gameResult.textContent = `You win! Player 1: ${p1}. Computer: ${comp}`;
+            playerScore.textContent = `Player 1: ${p1Score}`;
         } else if (result === `You lose!`) {
             compScore += 1;
-            computerScore.textContent = `Computer: ${compScore}`
+            gameResult.textContent = `You lose! Player 1: ${p1}. Computer: ${comp}`;
+            computerScore.textContent = `Computer: ${compScore}`;
+        } else if (result === "It's a draw!") {
+            gameResult.textContent = `Draw! Player 1: ${p1}. Computer: ${comp}`;
         }
         endGame()
         })      
