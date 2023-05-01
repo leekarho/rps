@@ -1,0 +1,35 @@
+body {
+    border-style: solid;
+    padding: 0px;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    background-color: aquamarine;
+    padding: 10px 0px;
+}
+
+.btn {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 10px;
+    background-color: bisque;
+}
+
+.score {
+    justify-content: center;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.scores {
+    justify-content: space-evenly;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.score, .scores {
+    display: flex;
+    background-color: rgb(250, 132, 128);
+}
